@@ -1,7 +1,7 @@
 import React from "react";
 
 export const AnimeInfo = (props) => {
-    const { title, images: { jpg: { large_image_url } }, rank, score, popularity } = props.animeInfo
+    const { title, images: { jpg: { large_image_url } }, rank, score, popularity, synopsis } = props.animeInfo
     return (
         <>
             <div className="anime-content">
@@ -10,7 +10,10 @@ export const AnimeInfo = (props) => {
                 <div className="info">
                     <h3>#Rank: {rank}</h3>
                     <h3>#Score: {score}</h3>
-                    <h3>#Popularity: {popularity}</h3> <hr /><br />
+                    <h3>#Popularity: {popularity}</h3>
+                    <h4>Synopsis: {synopsis}</h4>
+                    <hr /><br />
+
 
 
 

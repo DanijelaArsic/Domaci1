@@ -10,6 +10,7 @@ body {
     font-family: 'Kalnia', serif;
 }
 
+
 .header {
     background-color: #1c1c1b;
     color: white;
@@ -20,6 +21,7 @@ body {
 .header h1 {
     font-size: 36px;
 }
+
 
 .search-box {
     margin-top: 10px;
@@ -35,32 +37,38 @@ body {
     color: white;
 }
 
+
 .anime-row {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .row {
     display: flex;
     gap: 20px;
-    margin-left: 20rem;
+    flex-wrap: wrap;
+    justify-content: centers;
+    max-width: 1000px;
+
 }
 
 .text-heading {
-    margin-left: 20rem;
+    margin-left: 0;
     margin-top: 1rem;
     font-size: 24px;
 }
 
+
 .card {
+    position: relative;
     width: 230px;
     height: 350px;
-    padding: 1rem;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    margin-bottom: 20px;
     overflow: hidden;
-    position: relative;
 }
 
 .card img {
@@ -71,8 +79,13 @@ body {
     transition: 0.4s;
 }
 
+.card:hover img {
+    transform: scale(1.05);
+
+}
+
 .card .anime-info {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -93,11 +106,54 @@ body {
     margin-bottom: 4px;
 }
 
+
 .anime-content {
-    padding: 40px;
-    margin: 80px 0;
+    margin: 80px;
+    text-align: center
 }
 
 .anime-content img {
-    width: 150px;
+    width: 300px;
+    border-radius: 0px;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background-color: rgba(212, 187, 163, 0.9);
+    border-radius: 16px;
+    text-align: justify;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+    height: 100%;
+}
+
+.overlay .synopsis {
+    width: 80%;
+    margin: 0 auto;
+    max-height: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+
+@media (max-width: 768px) {
+    .row {
+        margin-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .text-heading {
+        margin-left: 0;
+    }
 }
