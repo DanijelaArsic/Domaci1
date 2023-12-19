@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [animeData, setAnimeData] = useState()
+
+  const getData = async () => {
+    const res = await fetch(`https://api.jikan.moe/v4/top/anime`)
+    const resData = await res.json();
+    setAnimeData(resData)
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
+
+
+
+
+
+
+
 }
 
-export default App;
+
+export default App
