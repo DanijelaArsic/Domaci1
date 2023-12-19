@@ -92,3 +92,12 @@ body {
     font-size: 18px;
     margin-bottom: 4px;
 }
+
+.anime-content {
+    padding: 40px;
+    margin: 80px 0;
+}
+
+.anime-content img {
+    width: 150px;
+}
