@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-export const AnimeList = ({ animelist, setAnimeInfo }) => {
+export const AnimeList = ({ animelist, setAnimeInfo, animeComponent, handleList }) => {
     const [showSynopsis, setShowSynopsis] = useState(false);
+    const AddToList = animeComponent;
 
     const handleAnimeClick = (anime) => {
         setAnimeInfo(anime);
@@ -18,8 +19,9 @@ export const AnimeList = ({ animelist, setAnimeInfo }) => {
                             <div className="anime-info">
                                 <h4>{anime.title}</h4>
                                 {showSynopsis && (
-                                    <div className="overlay">
+                                    <div className="overlay" onClick={() => handleList(anime)}>
                                         <h4>{anime.title_japanese}</h4>
+                                        <AddToList />
 
                                     </div>
                                 )}

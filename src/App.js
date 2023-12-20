@@ -2,11 +2,19 @@ import React, { useEffect, useState } from "react";
 import './Components/style.css'
 import { AnimeList } from "./Components/AnimeList";
 import { AnimeInfo } from "./Components/AnimeInfo";
+import { AddToList } from "./Components/AddToList";
 
 function App() {
   const [search, setSearch] = useState("")
   const [animeData, setAnimeData] = useState()
   const [animeInfo, setAnimeInfo] = useState()
+  const [myAnimeList, setmyAnimeList] = useState([])
+
+  const addTo = (anime) => {
+    const newArray = [...myAnimeList, anime]
+    setmyAnimeList(newArray);
+  }
+
 
   const getData = async () => {
     const res = await fetch(`https://api.jikan.moe/v4/top/anime?q=${search}`)
@@ -35,6 +43,16 @@ function App() {
         <div className="row">
           <AnimeList animelist={animeData}
             setAnimeInfo={setAnimeInfo}
+            animeComponent={AddToList}
+            handleList={(anime) => addTo(anime)}
+          />
+        </div>
+        <h2 className="text-heading">My List</h2>
+        <div className="row">
+          <AnimeList animelist={myAnimeList}
+            setAnimeInfo={setAnimeInfo}
+            animeComponent={AddToList}
+            handleList={(anime) => addTo(anime)}
           />
         </div>
       </div>
