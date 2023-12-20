@@ -3,6 +3,7 @@ import './Components/style.css'
 import { AnimeList } from "./Components/AnimeList";
 import { AnimeInfo } from "./Components/AnimeInfo";
 import { AddToList } from "./Components/AddToList";
+import { RemoveFromList } from "./Components/RemoveFromList";
 
 function App() {
   const [search, setSearch] = useState("")
@@ -11,8 +12,21 @@ function App() {
   const [myAnimeList, setmyAnimeList] = useState([])
 
   const addTo = (anime) => {
-    const newArray = [...myAnimeList, anime]
-    setmyAnimeList(newArray);
+    const index = myAnimeList.findIndex((myanime) => {
+      return myanime.mal_id === anime.mal_id
+    })
+    if (index < 0) {
+      const newArray = [...myAnimeList, anime]
+      setmyAnimeList(newArray);
+    }
+
+  }
+
+  const removeFrom = (anime) => {
+    const newArray = myAnimeList.filter((myanime) => {
+      return myanime.mal_id !== anime.mal_id
+    })
+    setmyAnimeList(newArray)
   }
 
 
@@ -51,8 +65,8 @@ function App() {
         <div className="row">
           <AnimeList animelist={myAnimeList}
             setAnimeInfo={setAnimeInfo}
-            animeComponent={AddToList}
-            handleList={(anime) => addTo(anime)}
+            animeComponent={RemoveFromList}
+            handleList={(anime) => removeFrom(anime)}
           />
         </div>
       </div>
