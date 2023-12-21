@@ -198,3 +198,26 @@ body {
 .contact-page-container a:hover {
     text-decoration: underline;
 }
+
+.manga-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.manga-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.manga-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}

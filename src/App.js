@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, } from "react-router-dom";
 import './Components/style.css'
 import { AnimeList } from "./Components/AnimeList";
 import { AnimeInfo } from "./Components/AnimeInfo";
 import { AddToList } from "./Components/AddToList";
 import { RemoveFromList } from "./Components/RemoveFromList";
 import ContactPage from "./Components/ContactPage";
+import MangaPage from "./Components/MangaPage";
 
 function App() {
   const [search, setSearch] = useState("")
@@ -59,9 +60,15 @@ function App() {
             <span>Contact</span>
           </Link>
         </div>
+        <div>
+          <Link to="/manga">
+            <span>Manga</span>
+          </Link>
+        </div>
       </div>
       <Routes>
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/manga" element={<MangaPage />} />
         <Route
           path="/"
           element={
