@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./MangaPage.css";
+import { MangaInfo } from "./MangaInfo";
+import { MangaList } from "./MangaList";
 
 const MangaPage = () => {
-    const [mangadata, setMangaData] = useState();
+    const [mangaData, setMangaData] = useState();
     const [search, setSearch] = useState("");
+    const [mangaInfo, setMangaInfo] = useState()
+
+
 
     const getData = async () => {
         try {
@@ -40,20 +45,26 @@ const MangaPage = () => {
                     onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
-            <div className="row">
-                {mangadata ? (
-                    mangadata.map((manga) => (
-                        <div className="card" key={manga.mal_id}>
-                            <img src={manga.images.jpg.large_image_url} alt={`Cover for ${manga.title}`} />
-                            <div className="anime-info">
-                                <h4>{manga.title}</h4>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>No manga found or Loading manga data...</p>
-                )}
+
+            <div className="container">
+                <div className="mangaInfo">
+                    {mangaInfo && <MangaInfo mangaInfo={mangaInfo} />}
+                </div>
+                <div className="manga-row">
+                    <div className="row">
+                        <MangaList
+                            mangalist={mangaData}
+                            setMangaInfo={setMangaInfo}
+
+
+
+                        />
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
     );
 }
