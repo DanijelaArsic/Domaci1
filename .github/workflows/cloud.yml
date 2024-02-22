@@ -37,6 +37,7 @@ jobs:
           echo "Build failed: Exit code $build_exit_code"
            exit $build_exit_code
         fi
+      shell: bash
 
   count-loc:
     runs-on: windows-latest
