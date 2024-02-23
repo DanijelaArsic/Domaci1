@@ -37,7 +37,9 @@ jobs:
         script: |
           const github = require('@actions/github');
           const context = github.context;
-
+          
           console.log('Hello, GitHub Actions!');
+          console.log('Repository:', context.repo.repo);
+          console.log('Event:', context.eventName);
           console.log('Repository:', context.repo.repo);
           console.log('Event:', context.eventName);
