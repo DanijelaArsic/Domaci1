@@ -31,9 +31,9 @@ jobs:
     - name: Verify build
       run: exit 0  
 
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: master
+    - name: Run semantic-release
+      uses: actions/semantic-release@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
 
