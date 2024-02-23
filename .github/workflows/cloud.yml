@@ -31,10 +31,13 @@ jobs:
     - name: Verify build
       run: exit 0  
 
+
     - name: Run GitHub Script
       uses: actions/github-script@v5
       with:
         script: |
+          const owner = process.env.GITHUB_REPOSITORY.split("/")[0];
+          const repo = process.env.GITHUB_REPOSITORY.split("/")[1];
           console.log('Hello, GitHub Actions!');
-          console.log('Repository:', github.context.repo.repo);
-          console.log('Event:', github.context.eventName);
+          console.log('Repository:', repo);
+          console.log('Owner:', owner);
