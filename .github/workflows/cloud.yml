@@ -31,12 +31,13 @@ jobs:
     - name: Verify build
       run: exit 0  
 
-   
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
+    - name: Run GitHub Script
+      uses: actions/github-script@v5
       with:
-        body: |
-          This is the release notes for version x.y.z.
-        tag_name: v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const github = require('@actions/github');
+          const context = github.context;
+
+          console.log('Hello, GitHub Actions!');
+          console.log('Repository:', context.repo.repo);
+          console.log('Event:', context.eventName);
