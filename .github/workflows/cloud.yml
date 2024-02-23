@@ -31,9 +31,12 @@ jobs:
     - name: Verify build
       run: exit 0  
 
-    - name: Check for first interaction
-      uses: actions/first-interaction@v1
+   
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: 'Welcome! Thanks for opening your first issue!'
-        pr-message: 'Hello there! Thanks for opening your first pull request!'
+        body: |
+          This is the release notes for version x.y.z.
+        tag_name: v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
