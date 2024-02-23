@@ -38,11 +38,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        ref: master  # Explicitly checkout code from the master branch
+        ref: master  
 
     - name: Count lines of code
-      uses: AlDanial/cloc-action@v1
+      uses: djdefi/cloc-action@6
       with:
         exclude: 'vendor,node_modules'
     - run: npm test
+    
 
