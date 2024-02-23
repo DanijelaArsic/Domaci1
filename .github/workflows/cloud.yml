@@ -31,9 +31,18 @@ jobs:
     - name: Verify build
       run: exit 0  
 
-    - name: Run semantic-release
-      uses: cycjimmy/semantic-release-action@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-
+  create-release:
+      runs-on: windows-latest  # Change to the same OS as the other job
+      needs: [build]
+      steps:
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0  # Specify the tag name for the release
+          release_name: Release v1.0.0  # Specify the release name
+          body: |
+            Release notes for version 1.0.0:
+            - Add feature A
+            - Fix issue #123
