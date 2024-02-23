@@ -29,18 +29,11 @@ jobs:
       run: npm install
 
     - name: Verify build
-      run: exit 0
-      
-  count-loc:
-    runs-on: windows-latest
-    needs: [build] 
-    steps:
+      run: exit 0  
+
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        ref: master  
-
-    - name: Count lines of code
-      uses: sobolevn/cloc-action@v2
+        ref: master
     
 
