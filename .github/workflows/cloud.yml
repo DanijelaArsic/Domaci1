@@ -5,9 +5,10 @@ name: Cloud Domaci CI
 
 on:
   push:
+    branches:
+      - master
   pull_request:
     branches:
-      - main
       - master
     types: [closed]
   workflow_dispatch:
